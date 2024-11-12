@@ -49,6 +49,9 @@ while replayBool :
     # Police pour l'affichage du score
     font = pygame.font.Font(None, 36)
 
+    # Vriable pour suivre l'état de pause
+    paused = False
+
     # Début de la boucle de jeu
     running = True
     while running:
@@ -60,63 +63,76 @@ while replayBool :
                     ship.move("left")
                 elif event.key == pygame.K_RIGHT:
                     ship.move("right")
+                elif event.key == pygame.K_p:
+                    # Basculer l'état de pause lorsque 'P' est pressée
+                    paused = not paused
         
-        # Remplissage de l'écran en noir
-        screen.fill((0, 0, 0))
-        # On dessine les rectangles inclinés
-        screen.blit(left_rect, left_rect_rect)
-        screen.blit(right_rect, right_rect_rect)
-        
-        # Incrémentation du score par le temps de jeu
-        score += 1
-
-        # Création de nouvelles sphères à intervalles réguliers
-        frame_count += 1
-        if frame_count >= spawn_delay:
-            spheres.append(Sphere())
-            frame_count = 0
-
-        # Réduction de l'intervalle entre les temps d'apparition des sphères
-        spawn_delay = spawn_delay - 0.01
-        
-        # Mouvement et affichage des sphères
-        for sphere in spheres:
-            sphere.move()
-            sphere.draw(screen)
+        if not paused:
+            # Remplissage de l'écran en noir
+            screen.fill((0, 0, 0))
+            # On dessine les rectangles inclinés
+            screen.blit(left_rect, left_rect_rect)
+            screen.blit(right_rect, right_rect_rect)
             
-            # Vérification de collision avec la nouvelle taille de la sphère
-            if sphere.collides_with(ship):
-                print("Collision! Game Over!")
-                if score > highscore:
-                    player.high_score = score
-                player.save_data()
-                running = False
+            # Incrémentation du score par le temps de jeu
+            score += 1
+
+            # Création de nouvelles sphères à intervalles réguliers
+            frame_count += 1
+            if frame_count >= spawn_delay:
+                spheres.append(Sphere())
+                frame_count = 0
+
+            # Réduction de l'intervalle entre les temps d'apparition des sphères
+            spawn_delay = spawn_delay - 0.01
             
-            # Suppression des sphères en dehors de l'écran
-            if sphere.y - sphere.radius > 600:  # Inclut le rayon dans le test de sortie d'écran
-                spheres.remove(sphere)
-                score += 100  # Ajoute des points pour chaque sphère esquivée
-        
+            # Mouvement et affichage des sphères
+            for sphere in spheres:
+                sphere.move()
+                sphere.draw(screen)
+                
+                # Vérification de collision avec la nouvelle taille de la sphère
+                if sphere.collides_with(ship):
+                    print("Collision! Game Over!")
+                    if score > highscore:
+                        player.high_score = score
+                    player.save_data()
+                    running = False
+                
+                # Suppression des sphères en dehors de l'écran
+                if sphere.y - sphere.radius > 600:  # Inclut le rayon dans le test de sortie d'écran
+                    spheres.remove(sphere)
+                    score += 100  # Ajoute des points pour chaque sphère esquivée
+            
 
-        # Affichage du texte "Score" en haut à droite
-        label_text = font.render("Score", True, (255, 255, 255))
-        screen.blit(label_text, (10, 10))
+            # Affichage du texte "Score" en haut à gauche
+            label_text = font.render("Score", True, (255, 255, 255))
+            screen.blit(label_text, (10, 10))
 
-        # Affichage de la valeur de score en dessous
-        score_text = font.render(str(score), True, (255, 255, 255))
-        screen.blit(score_text, (10, 40))
+            # Affichage de la valeur de score en dessous
+            score_text = font.render(str(score), True, (255, 255, 255))
+            screen.blit(score_text, (10, 40))
 
-        # Affichage du texte "High score" en haut à droite
-        label_text = font.render("High score", True, (255, 255, 255))
-        screen.blit(label_text, (10, 70))
+            # Affichage du texte "High score" en haut à gauche
+            label_text = font.render("High score", True, (255, 255, 255))
+            screen.blit(label_text, (10, 70))
 
-        # Affichage de la valeur de score en dessous
-        score_text = font.render(str(highscore), True, (255, 255, 255))
-        screen.blit(score_text, (10, 100))
+            # Affichage de la valeur de score en dessous
+            score_text = font.render(str(highscore), True, (255, 255, 255))
+            screen.blit(score_text, (10, 100))
 
-        # Affichage du vaisseau
-        ship.draw(screen)
-        
+            # Affichage du texte "Pause" en haut à droite
+            label_text = font.render("P to pause", True, (255, 255, 255))
+            screen.blit(label_text, (600, 10))
+
+            # Affichage du vaisseau
+            ship.draw(screen)
+
+        else:
+            # Afficher le texte de pause lorsque le jeu est en pause
+            pause_text = font.render("PAUSED", True, (255, 255, 255))
+            screen.blit(pause_text, (350, 300))
+
         # Mise à jour de l'écran
         pygame.display.flip()
         clock.tick(60)
