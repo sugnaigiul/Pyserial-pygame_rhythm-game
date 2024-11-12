@@ -18,7 +18,7 @@ Arduino: Code uploaded to an Arduino Nano to read potentiometer values.
 
 ## Setup
 
-1. **Clone the Repository** (if applicable):
+1. **Clone the Repository**:
 
    ```bash
    git clone <repository-url>
@@ -39,7 +39,7 @@ Arduino: Code uploaded to an Arduino Nano to read potentiometer values.
 arduino = serial.Serial('COM7', 9600, timeout=1)
 ```
 
-If you have any doubts, you can see which port is in use on your computer by running :
+If you have any doubts, you can see which port is in use on your computer by running this command in your terminal :
 
 ```python
 python -m serial.tools.list_ports
@@ -47,7 +47,7 @@ python -m serial.tools.list_ports
 
 ## Run the game
 
-Go in the src folder and enter :
+Go in the ./src directory and run :
 
 ```bash
 python ./main.py
