@@ -56,8 +56,9 @@ while replayBool :
     score = 0  # Score du joueur pour la partie en cours
     highscore = player.high_score # Highscore du joueur depuis son CSV
 
-    # Police pour l'affichage du score
-    font = pygame.font.Font(None, 36)
+    # On charge notre police custom
+    font = pygame.font.Font("assets/fonts/F25_Bank_Printer.ttf", 25)
+
 
     # Vriable pour suivre l'état de pause
     paused = False

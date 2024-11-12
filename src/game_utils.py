@@ -17,7 +17,7 @@ right_rect_rect = right_rect.get_rect(center=(700, 300))  # Place le rectangle e
 # Fonction pour obtenir les initiales du joueur
 def get_player_initials(screen):
     initials = ""
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font("assets/fonts/F25_Bank_Printer.ttf", 30)
     input_active = True
 
     while input_active:
@@ -26,9 +26,9 @@ def get_player_initials(screen):
         screen.blit(left_rect, left_rect_rect)
         screen.blit(right_rect, right_rect_rect)
         prompt_text = font.render("Entrez vos 3 initiales :", True, (255, 255, 255))
-        screen.blit(prompt_text, (250, 250))
+        screen.blit(prompt_text, (155, 250))
         initials_text = font.render(initials, True, (255, 255, 255))
-        screen.blit(initials_text, (350, 300))
+        screen.blit(initials_text, (368, 300))
         pygame.display.flip()
 
         for event in pygame.event.get():
@@ -47,7 +47,7 @@ def get_player_initials(screen):
 
 # Fonction pour relancer une partie
 def replay(screen, score):
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font("assets/fonts/F25_Bank_Printer.ttf", 25)
     input_active = True
 
     while input_active:
@@ -62,7 +62,7 @@ def replay(screen, score):
         score_text = font.render(str(score), True, (255, 255, 255))
         screen.blit(score_text, (290, 100))
         prompt_text = font.render("Start again ? (y/n)", True, (255, 255, 255))
-        screen.blit(prompt_text, (290, 400))
+        screen.blit(prompt_text, (250, 400))
         pygame.display.flip()
 
         for event in pygame.event.get():
