@@ -1,5 +1,7 @@
 # Python rhythm-game
 
+![alt text](src/assets/readMePic.PNG)
+
 A rhythm-based dodging game created with Pygame where the player controls a spaceship to avoid obstacles. The spaceship can be controlled either by the keyboard or an external potentiometer connected to an Arduino Nano. The potentiometer setup is read via serial communication using the pyserial library.
 
 ## How It Works
