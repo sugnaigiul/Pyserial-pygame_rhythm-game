@@ -2,6 +2,8 @@ import pygame
 import random
 import math
 import csv
+import serial
+import time
 from player import Player
 from ship import Ship
 from sphere import Sphere
@@ -14,6 +16,14 @@ screen = pygame.display.set_mode((800, 600))
 clock = pygame.time.Clock()
 pygame.display.set_caption("Mon jeu de rythme")
 replayBool = True
+
+# Initialisation de la connexion série
+try:
+    arduino = serial.Serial('COM7', 9600, timeout=1)  # Remplace 'COM3' par le port de ton Arduino
+    time.sleep(2)  # Donne du temps à l'Arduino pour se stabiliser
+except serial.SerialException:
+    print("Erreur : Impossible de se connecter à l'Arduino.") # Bien verifier qu'il n'y a apas déjà une connexion avec un autre serial monitor (arduino)
+    arduino = None
 
 # Création des rectangles inclinés pour former une route
 # Rectangle gauche
@@ -85,6 +95,16 @@ while replayBool :
 
             # Réduction de l'intervalle entre les temps d'apparition des sphères
             spawn_delay = spawn_delay - 0.01
+
+            # Mouvement du ship via potentiometre si un arduino est detecté
+            if arduino:
+                # Vérifier s'il y a des données disponibles
+                if arduino.in_waiting > 0:
+                    try:
+                        pot_value = int(arduino.readline().decode().strip())
+                        ship.moveWithPotentio(pot_value)
+                    except ValueError:
+                        pass  # Ignore les lignes non valides
             
             # Mouvement et affichage des sphères
             for sphere in spheres:

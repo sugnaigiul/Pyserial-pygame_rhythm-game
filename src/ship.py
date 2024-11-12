@@ -30,6 +30,13 @@ class Ship:
         # Met à jour le rectangle pour rester centré après la rotation
         self.rect = self.image.get_rect(center=self.rect.center)
 
+    def moveWithPotentio(self, pot_value):
+        # Mappe la valeur du potentiomètre (0 à 1023) à la largeur de l'écran (par exemple, 10 à 790)
+        mapped_x = (pot_value / 1023) * (800 - self.rect.width) + 10
+        self.rect.x = int(mapped_x)
+        # Met à jour l'inclinaison en fonction de la position du vaisseau
+        self.update_tilt()
+
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
