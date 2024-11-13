@@ -56,3 +56,14 @@ python ./main.py
 ## About controls
 
 When starting, the game scans for an arduino (with the right code uploaded on it) connected to the specified COM port. If connection is made, the game is then controlled by the MCU potentiometer. Whoever is the connection cannot be established, an error message will appear in the terminal. The game will still be playable but only using the arrow keys.
+
+## Statistics
+
+The statistics directory contains a script to help visualize the player data stored in the csv file.
+When executed, it plots two graphs : the scores of all players by sorted by their highscore and the highscore compared to the number of games played.
+
+To start this script use :
+```bash
+python .\stats.py
+```
+In the statistics directory.
