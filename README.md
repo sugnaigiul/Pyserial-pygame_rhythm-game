@@ -71,3 +71,7 @@ python .\stats.py
 In the statistics directory.
 
 ![alt text](src/assets/stats-fig.png)
+
+## Video demo 
+
+<video controls src="src/assets/demo.mp4" title="Title"></video>
