@@ -69,3 +69,5 @@ To start this script use :
 python .\stats.py
 ```
 In the statistics directory.
+
+![alt text](src/assets/stats-fig.png)
