@@ -27,7 +27,7 @@ Arduino: Code uploaded to an Arduino Nano to read potentiometer values.
 2. **Install Required Packages**:
 
    ```bash
-   pip install pygame pyserial
+   pip install -r requirements.txt
    ```
 
 3. **Arduino Setup**:
