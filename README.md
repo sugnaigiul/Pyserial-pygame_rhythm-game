@@ -31,6 +31,8 @@ Arduino: Code uploaded to an Arduino Nano to read potentiometer values.
    ```
 
 3. **Arduino Setup**:
+   - Build your circuit according to this image :
+   ![alt text](src/assets/circuit-Rhythm.jpg)
    - Upload a sketch to the Arduino Nano to read the potentiometer and send the analog value (0-1023) over serial.
    - Ensure the Arduino is connected to the correct COM port.
    - MAKE SURE THE RIGHT PORT IS SELECTED in the main.py (around line 20) :
