@@ -18,16 +18,16 @@ plt.figure(figsize=(18, 6))
 plt.subplot(1, 3, 1)  # 1 ligne, 3 colonnes, 1er graphique
 plt.bar(df_sorted['Player'], df_sorted['Score'], color='skyblue')
 plt.xlabel('Joueurs')
-plt.ylabel('Score')
-plt.title('Scores des joueurs triés en ordre croissant')
+plt.ylabel('Highscore')
+plt.title('Highscores des joueurs triés en ordre croissant')
 plt.xticks(rotation=90)
 
 # Deuxième graphique : Scatter plot (Score vs Games)
 plt.subplot(1, 3, 2)  # 1 ligne, 3 colonnes, 2ème graphique
 plt.scatter(df['Games'], df['Score'], color='coral')
 plt.xlabel('Nombre de parties')
-plt.ylabel('Score')
-plt.title('Score en fonction du nombre de parties')
+plt.ylabel('Highscore')
+plt.title('Highscore en fonction du nombre de parties')
 plt.grid(True)
 
 # Troisième graphique : Diagramme en camembert (proportion de joueurs)
