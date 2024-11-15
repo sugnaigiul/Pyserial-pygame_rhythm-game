@@ -74,4 +74,4 @@ In the statistics directory.
 
 ## Video demo 
 
-<video controls src="src/assets/demo.mp4" title="Title"></video>
+https://github.com/user-attachments/assets/91ea7339-2df3-4a99-9bcf-886c10b68b9d
