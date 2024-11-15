@@ -72,6 +72,8 @@ In the statistics directory.
 
 ![alt text](src/assets/stats-fig.png)
 
+Alternatively, a jupyter notebook is also available to visualize every graphics individually.
+
 ## Video demo 
 
 https://github.com/user-attachments/assets/91ea7339-2df3-4a99-9bcf-886c10b68b9d
