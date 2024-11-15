@@ -17,6 +17,13 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("Mon jeu de rythme")
 replayBool = True
 
+# Initialise le module de mixage audio
+pygame.mixer.init()
+# Charger et jouer la musique de fond
+pygame.mixer.music.load("assets/RALLY-HOUSE.mp3")  # Chemin vers ton fichier de musique
+pygame.mixer.music.set_volume(0.5)  # Ajuste le volume entre 0.0 et 1.0
+pygame.mixer.music.play(-1)  # '-1' permet de jouer la musique en boucle
+
 # Initialisation de la connexion série
 try:
     arduino = serial.Serial('COM7', 9600, timeout=1)  # Remplace 'COM3' par le port de ton Arduino
